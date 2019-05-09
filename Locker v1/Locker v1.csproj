@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F2390CF-9B13-4CAC-8A59-6945BF3CD464}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Locker_v1</RootNamespace>
+    <AssemblyName>Locker v1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>keyboard-5-64.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gma.System.MouseKeyHook">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook\bin\Debug\Gma.System.MouseKeyHook.dll</HintPath>
+    </Reference>
+    <Reference Include="MouseKeyHook.Rx">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook.Rx\bin\Debug\MouseKeyHook.Rx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook.Rx\bin\Debug\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook.Rx\bin\Debug\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook.Rx\bin\Debug\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook.Rx\bin\Debug\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\..\..\..\Desktop\globalmousekeyhook-vNext\MouseKeyHook.Rx\bin\Debug\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassRecorder.cs" />
+    <Compile Include="PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Shortcut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shortcut.Designer.cs">
+      <DependentUpon>Shortcut.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shortcut.resx">
+      <DependentUpon>Shortcut.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\k_green.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_green.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_red.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\k_red.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\parallel-tasks-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hdd-24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="keyboard-5-64.ico" />
+    <None Include="Resources\visible-16.jpg" />
+    <None Include="Resources\warning-38-24.jpg" />
+    <None Include="Resources\warning-38-16.jpg" />
+    <None Include="Resources\trash-9-16.jpg" />
+    <None Include="Resources\trash-9-24.jpg" />
+    <None Include="Resources\k_silver.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
