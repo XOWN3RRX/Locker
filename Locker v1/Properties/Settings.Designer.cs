@@ -70,5 +70,17 @@ namespace Locker_v1.Properties {
                 this["TaskMgr"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoClear {
+            get {
+                return ((bool)(this["AutoClear"]));
+            }
+            set {
+                this["AutoClear"] = value;
+            }
+        }
     }
 }

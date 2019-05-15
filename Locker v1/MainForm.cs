@@ -18,6 +18,8 @@ namespace Locker_v1
         private Combination combination;
         private Dictionary<Combination, Action> assignment;
         private bool err = false;
+        bool lastMouse = false;
+        MouseState mouseState;
 
         public MainForm()
         {
@@ -42,6 +44,9 @@ namespace Locker_v1
                     ToggleTaskManager(false);
                 }
 
+                textBox1.Text = textBox1.Text.Replace(pass.Password, "");
+                textBox1.Select(0, 0);
+
                 notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker stopped...", ToolTipIcon.Info);
             }
         }
@@ -50,38 +55,41 @@ namespace Locker_v1
         {
             actiune = delegate ()
             {
+                if (!string.IsNullOrWhiteSpace(pass.Password))
                 {
-                    if (!string.IsNullOrWhiteSpace(pass.Password))
+                    if (m_Events != null)
                     {
-                        if (m_Events != null)
+                        if (isEnabled == false)
                         {
-                            if (isEnabled == false)
+
+                            isEnabled = true;
+                            StartHookKeyboard(isEnabled);
+                            StartHookMouse(isEnabled);
+
+                            if (Settings.Default.TaskMgr)
                             {
-
-                                isEnabled = true;
-                                StartHookKeyboard(isEnabled);
-                                StartHookMouse(isEnabled);
-
-                                if(Settings.Default.TaskMgr)
-                                {
-                                    ToggleTaskManager(true);
-                                }
-
-                                notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker started...", ToolTipIcon.Info);
-
-                                notifyIcon1.Icon = Icon.FromHandle(Resources.k_red.GetHicon());
+                                ToggleTaskManager(true);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Start listening first.");
+
+                            notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker started...", ToolTipIcon.Info);
+
+                            if (Settings.Default.AutoClear)
+                            {
+                                textBox1.Clear();
+                            }
+
+                            notifyIcon1.Icon = Icon.FromHandle(Resources.k_red.GetHicon());
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Password don't exists!");
+                        MessageBox.Show("Start listening first.");
                     }
-                };
+                }
+                else
+                {
+                    MessageBox.Show("Password don't exists!");
+                }
             };
         }
 
@@ -153,6 +161,11 @@ namespace Locker_v1
                 {
                     taskManagerToolStripMenuItem.Checked = true;
                 }
+            }
+
+            if (Settings.Default.AutoClear)
+            {
+                autoClearToolStripMenuItem.Checked = true;
             }
         }
 
@@ -230,7 +243,12 @@ namespace Locker_v1
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            Log(string.Format("KeyDown\t\t {0}", e.KeyCode));
+            if(mouseState == MouseState.State2)
+            {
+                mouseState = MouseState.State1;
+            }
+
+            Log(string.Format("{0}", (char)e.KeyValue));
 
             if (isEnabled)
             {
@@ -247,19 +265,30 @@ namespace Locker_v1
                 return;
             }
 
-            textBox1.AppendText(text + Environment.NewLine);
+            if(mouseState == MouseState.State1)
+            {
+                mouseState = MouseState.State0;
+                textBox1.AppendText(Environment.NewLine);
+            }
+
+            if(mouseState == MouseState.State2)
+            {
+                textBox1.AppendText(Environment.NewLine);
+            }
+
+            textBox1.AppendText(text);
             textBox1.ScrollToCaret();
         }
 
         private void HookManager_Supress(object sender, MouseEventExtArgs e)
         {
-            Log(string.Format("MouseClick \t {0}\tX : {1}\tY : {2}", e.Button, e.X, e.Y));
+            mouseState = MouseState.State2;
+            Log(string.Format("{0}\tX : {1}\tY : {2}", e.Button, e.X, e.Y));
             e.Handled = true;
         }
 
         private void M_Events_MouseWheelExt(object sender, MouseEventExtArgs e)
         {
-            Log(string.Format("MouseWheel \t {0}", e.Button));
             e.Handled = true;
         }
 
@@ -366,6 +395,7 @@ namespace Locker_v1
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            notifyIcon1.Dispose();
             Process.GetCurrentProcess().Kill();
         }
 
@@ -378,6 +408,21 @@ namespace Locker_v1
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
+        }
+
+        private void autoClearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!(sender as ToolStripMenuItem).Checked)
+            {
+                (sender as ToolStripMenuItem).Checked = true;
+            }
+            else
+            {
+                (sender as ToolStripMenuItem).Checked = false;
+            }
+
+            Settings.Default.AutoClear = (sender as ToolStripMenuItem).Checked;
+            Settings.Default.Save();
         }
     }
 }
