@@ -82,5 +82,17 @@ namespace Locker_v1.Properties {
                 this["AutoClear"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Notification {
+            get {
+                return ((bool)(this["Notification"]));
+            }
+            set {
+                this["Notification"] = value;
+            }
+        }
     }
 }

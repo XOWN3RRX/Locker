@@ -47,7 +47,10 @@ namespace Locker_v1
                 textBox1.Text = textBox1.Text.Replace(pass.Password, "");
                 textBox1.Select(0, 0);
 
-                notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker stopped...", ToolTipIcon.Info);
+                if (Settings.Default.Notification)
+                {
+                    notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker stopped...", ToolTipIcon.Info);
+                }
             }
         }
 
@@ -71,7 +74,10 @@ namespace Locker_v1
                                 ToggleTaskManager(true);
                             }
 
-                            notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker started...", ToolTipIcon.Info);
+                            if(Settings.Default.Notification)
+                            {
+                                notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker started...", ToolTipIcon.Info);
+                            }
 
                             if (Settings.Default.AutoClear)
                             {
@@ -167,6 +173,11 @@ namespace Locker_v1
             {
                 autoClearToolStripMenuItem.Checked = true;
             }
+
+            if (Settings.Default.Notification)
+            {
+                notificationToolStripMenuItem.Checked = true;
+            }
         }
 
         private void GlobalSubscribe()
@@ -243,7 +254,7 @@ namespace Locker_v1
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if(mouseState == MouseState.State2)
+            if (mouseState == MouseState.State2)
             {
                 mouseState = MouseState.State1;
             }
@@ -265,13 +276,13 @@ namespace Locker_v1
                 return;
             }
 
-            if(mouseState == MouseState.State1)
+            if (mouseState == MouseState.State1)
             {
                 mouseState = MouseState.State0;
                 textBox1.AppendText(Environment.NewLine);
             }
 
-            if(mouseState == MouseState.State2)
+            if (mouseState == MouseState.State2)
             {
                 textBox1.AppendText(Environment.NewLine);
             }
@@ -422,6 +433,21 @@ namespace Locker_v1
             }
 
             Settings.Default.AutoClear = (sender as ToolStripMenuItem).Checked;
+            Settings.Default.Save();
+        }
+
+        private void notificationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem).Checked)
+            {
+                (sender as ToolStripMenuItem).Checked = false;
+            }
+            else
+            {
+                (sender as ToolStripMenuItem).Checked = true;
+            }
+
+            Settings.Default.Notification = (sender as ToolStripMenuItem).Checked;
             Settings.Default.Save();
         }
     }

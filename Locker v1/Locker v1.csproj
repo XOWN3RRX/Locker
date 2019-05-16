@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="keyboard-5-64.ico" />
+    <None Include="Resources\message-2-24.jpg" />
     <None Include="Resources\visible-16.jpg" />
     <None Include="Resources\warning-38-24.jpg" />
     <None Include="Resources\warning-38-16.jpg" />
