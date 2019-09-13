@@ -18,12 +18,13 @@ namespace Locker_v1
         private Combination combination;
         private Dictionary<Combination, Action> assignment;
         private bool err = false;
-        bool lastMouse = false;
-        MouseState mouseState;
+        private MouseState mouseState;
+        private List<LockerForm> lockerForms;
 
         public MainForm()
         {
             InitializeComponent();
+            lockerForms = new List<LockerForm>();
             pass = new PassRecorder();
             pass.Password = Settings.Default.Password;
             pass.OnValidPassword += Pass_OnValidPassword;
@@ -51,6 +52,36 @@ namespace Locker_v1
                 {
                     notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker stopped...", ToolTipIcon.Info);
                 }
+
+                foreach (var item in lockerForms)
+                {
+                    item.Hide();
+                    item.Dispose();
+                }
+
+                lockerForms.Clear();
+            }
+        }
+
+        private void SetFormOnAllScreens()
+        {
+            Screen[] screns = Screen.AllScreens;
+
+            lockerForms.Clear();
+
+            for (int i = 0; i < screns.Length; i++)
+            {
+                LockerForm frm = new LockerForm();
+                frm.StartPosition = FormStartPosition.Manual;
+                Rectangle bounds = screns[i].Bounds;
+
+                frm.Location = new Point(((bounds.Width - frm.Width) / 2) + bounds.X, (bounds.Height - frm.Height) / 2);
+                frm.TopMost = true;
+                frm.ShowInTaskbar = false;
+
+                frm.Show();
+
+                lockerForms.Add(frm);
             }
         }
 
@@ -64,6 +95,11 @@ namespace Locker_v1
                     {
                         if (isEnabled == false)
                         {
+                            //Form Invoke
+                            if (Settings.Default.LockForm)
+                            {
+                                SetFormOnAllScreens();
+                            }
 
                             isEnabled = true;
                             StartHookKeyboard(isEnabled);
@@ -74,7 +110,7 @@ namespace Locker_v1
                                 ToggleTaskManager(true);
                             }
 
-                            if(Settings.Default.Notification)
+                            if (Settings.Default.Notification)
                             {
                                 notifyIcon1.ShowBalloonTip(2000, "Locker", "Locker started...", ToolTipIcon.Info);
                             }
@@ -105,7 +141,6 @@ namespace Locker_v1
             Shortcut shortcut = new Shortcut();
             shortcut.ShowDialog();
             pass.Password = Settings.Default.Password;
-            //GlobalSubscribe();
         }
 
         private void currentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,6 +187,11 @@ namespace Locker_v1
                 stoppedToolStripMenuItem1.Text = "Started";
                 stoppedToolStripMenuItem1.Checked = true;
                 GlobalSubscribe();
+            }
+
+            if(Settings.Default.LockForm)
+            {
+                lockFormToolStripMenuItem.Checked = true;
             }
 
             notifyIcon1.Icon = Icon.FromHandle(Resources.k_silver.GetHicon());
@@ -448,6 +488,21 @@ namespace Locker_v1
             }
 
             Settings.Default.Notification = (sender as ToolStripMenuItem).Checked;
+            Settings.Default.Save();
+        }
+
+        private void LockFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem).Checked)
+            {
+                (sender as ToolStripMenuItem).Checked = false;
+            }
+            else
+            {
+                (sender as ToolStripMenuItem).Checked = true;
+            }
+
+            Settings.Default.LockForm = (sender as ToolStripMenuItem).Checked;
             Settings.Default.Save();
         }
     }

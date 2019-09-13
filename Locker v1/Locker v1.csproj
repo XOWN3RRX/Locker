@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LockerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LockerForm.Designer.cs">
+      <DependentUpon>LockerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <Compile Include="Shortcut.Designer.cs">
       <DependentUpon>Shortcut.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="LockerForm.resx">
+      <DependentUpon>LockerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +165,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="keyboard-5-64.ico" />
+    <Content Include="Resources\lock.png" />
+    <None Include="Resources\locked.jpg" />
+    <None Include="Resources\private-256.png" />
+    <None Include="Resources\private-24.png" />
     <None Include="Resources\message-2-24.jpg" />
     <None Include="Resources\visible-16.jpg" />
     <None Include="Resources\warning-38-24.jpg" />

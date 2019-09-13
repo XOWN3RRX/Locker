@@ -31,26 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.appToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.currentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stoppedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.taskManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logBetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.notificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lockFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stoppedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.taskManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stoppedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notificationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +69,15 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // appToolStripMenuItem
+            // 
+            this.appToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notificationToolStripMenuItem,
+            this.lockFormToolStripMenuItem});
+            this.appToolStripMenuItem.Name = "appToolStripMenuItem";
+            this.appToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.appToolStripMenuItem.Text = "App";
+            // 
             // shortcutToolStripMenuItem
             // 
             this.shortcutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -76,22 +86,6 @@
             this.shortcutToolStripMenuItem.Name = "shortcutToolStripMenuItem";
             this.shortcutToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.shortcutToolStripMenuItem.Text = "Shortcut";
-            // 
-            // newShortcutToolStripMenuItem
-            // 
-            this.newShortcutToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.add_24;
-            this.newShortcutToolStripMenuItem.Name = "newShortcutToolStripMenuItem";
-            this.newShortcutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newShortcutToolStripMenuItem.Text = "New";
-            this.newShortcutToolStripMenuItem.Click += new System.EventHandler(this.newShortcutToolStripMenuItem_Click);
-            // 
-            // currentToolStripMenuItem
-            // 
-            this.currentToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.info_24;
-            this.currentToolStripMenuItem.Name = "currentToolStripMenuItem";
-            this.currentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.currentToolStripMenuItem.Text = "Current";
-            this.currentToolStripMenuItem.Click += new System.EventHandler(this.currentToolStripMenuItem_Click);
             // 
             // hookToolStripMenuItem
             // 
@@ -103,30 +97,6 @@
             this.hookToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.hookToolStripMenuItem.Text = "Hook";
             // 
-            // stoppedToolStripMenuItem
-            // 
-            this.stoppedToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.start_24;
-            this.stoppedToolStripMenuItem.Name = "stoppedToolStripMenuItem";
-            this.stoppedToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.stoppedToolStripMenuItem.Text = "Stopped";
-            this.stoppedToolStripMenuItem.Click += new System.EventHandler(this.stoppedToolStripMenuItem_Click);
-            // 
-            // passwordToolStripMenuItem
-            // 
-            this.passwordToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.key_24;
-            this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
-            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.passwordToolStripMenuItem.Text = "Password";
-            this.passwordToolStripMenuItem.Click += new System.EventHandler(this.passwordToolStripMenuItem_Click);
-            // 
-            // taskManagerToolStripMenuItem
-            // 
-            this.taskManagerToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.parallel_tasks_24;
-            this.taskManagerToolStripMenuItem.Name = "taskManagerToolStripMenuItem";
-            this.taskManagerToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.taskManagerToolStripMenuItem.Text = "AutoDisableTaskManager";
-            this.taskManagerToolStripMenuItem.Click += new System.EventHandler(this.taskManagerToolStripMenuItem_Click);
-            // 
             // logBetaToolStripMenuItem
             // 
             this.logBetaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -136,29 +106,6 @@
             this.logBetaToolStripMenuItem.Name = "logBetaToolStripMenuItem";
             this.logBetaToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.logBetaToolStripMenuItem.Text = "Log(Beta)";
-            // 
-            // pathToolStripMenuItem
-            // 
-            this.pathToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.hdd_24;
-            this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pathToolStripMenuItem.Text = "Path";
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.warning_38_24;
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
-            // 
-            // autoClearToolStripMenuItem
-            // 
-            this.autoClearToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.warning_38_24;
-            this.autoClearToolStripMenuItem.Name = "autoClearToolStripMenuItem";
-            this.autoClearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.autoClearToolStripMenuItem.Text = "Auto Clear";
-            this.autoClearToolStripMenuItem.Click += new System.EventHandler(this.autoClearToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -199,6 +146,85 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(119, 70);
             // 
+            // notificationToolStripMenuItem
+            // 
+            this.notificationToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.message_2_24;
+            this.notificationToolStripMenuItem.Name = "notificationToolStripMenuItem";
+            this.notificationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.notificationToolStripMenuItem.Text = "Notification";
+            this.notificationToolStripMenuItem.Click += new System.EventHandler(this.notificationToolStripMenuItem_Click);
+            // 
+            // lockFormToolStripMenuItem
+            // 
+            this.lockFormToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.private_24;
+            this.lockFormToolStripMenuItem.Name = "lockFormToolStripMenuItem";
+            this.lockFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lockFormToolStripMenuItem.Text = "Lock Form";
+            this.lockFormToolStripMenuItem.Click += new System.EventHandler(this.LockFormToolStripMenuItem_Click);
+            // 
+            // newShortcutToolStripMenuItem
+            // 
+            this.newShortcutToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.add_24;
+            this.newShortcutToolStripMenuItem.Name = "newShortcutToolStripMenuItem";
+            this.newShortcutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.newShortcutToolStripMenuItem.Text = "New";
+            this.newShortcutToolStripMenuItem.Click += new System.EventHandler(this.newShortcutToolStripMenuItem_Click);
+            // 
+            // currentToolStripMenuItem
+            // 
+            this.currentToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.info_24;
+            this.currentToolStripMenuItem.Name = "currentToolStripMenuItem";
+            this.currentToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.currentToolStripMenuItem.Text = "Current";
+            this.currentToolStripMenuItem.Click += new System.EventHandler(this.currentToolStripMenuItem_Click);
+            // 
+            // stoppedToolStripMenuItem
+            // 
+            this.stoppedToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.start_24;
+            this.stoppedToolStripMenuItem.Name = "stoppedToolStripMenuItem";
+            this.stoppedToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.stoppedToolStripMenuItem.Text = "Stopped";
+            this.stoppedToolStripMenuItem.Click += new System.EventHandler(this.stoppedToolStripMenuItem_Click);
+            // 
+            // passwordToolStripMenuItem
+            // 
+            this.passwordToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.key_24;
+            this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
+            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.passwordToolStripMenuItem.Text = "Password";
+            this.passwordToolStripMenuItem.Click += new System.EventHandler(this.passwordToolStripMenuItem_Click);
+            // 
+            // taskManagerToolStripMenuItem
+            // 
+            this.taskManagerToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.parallel_tasks_24;
+            this.taskManagerToolStripMenuItem.Name = "taskManagerToolStripMenuItem";
+            this.taskManagerToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.taskManagerToolStripMenuItem.Text = "AutoDisableTaskManager";
+            this.taskManagerToolStripMenuItem.Click += new System.EventHandler(this.taskManagerToolStripMenuItem_Click);
+            // 
+            // pathToolStripMenuItem
+            // 
+            this.pathToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.hdd_24;
+            this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.pathToolStripMenuItem.Text = "Path";
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.warning_38_24;
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
+            // 
+            // autoClearToolStripMenuItem
+            // 
+            this.autoClearToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.warning_38_24;
+            this.autoClearToolStripMenuItem.Name = "autoClearToolStripMenuItem";
+            this.autoClearToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.autoClearToolStripMenuItem.Text = "Auto Clear";
+            this.autoClearToolStripMenuItem.Click += new System.EventHandler(this.autoClearToolStripMenuItem_Click);
+            // 
             // opemToolStripMenuItem
             // 
             this.opemToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.visible_16;
@@ -222,22 +248,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // appToolStripMenuItem
-            // 
-            this.appToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.notificationToolStripMenuItem});
-            this.appToolStripMenuItem.Name = "appToolStripMenuItem";
-            this.appToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.appToolStripMenuItem.Text = "App";
-            // 
-            // notificationToolStripMenuItem
-            // 
-            this.notificationToolStripMenuItem.Image = global::Locker_v1.Properties.Resources.message_2_24;
-            this.notificationToolStripMenuItem.Name = "notificationToolStripMenuItem";
-            this.notificationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.notificationToolStripMenuItem.Text = "Notification";
-            this.notificationToolStripMenuItem.Click += new System.EventHandler(this.notificationToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -286,6 +296,7 @@
         private System.Windows.Forms.ToolStripMenuItem autoClearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notificationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lockFormToolStripMenuItem;
     }
 }
 
